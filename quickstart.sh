@@ -58,12 +58,11 @@ fi
 
 echo "✅ config.py exists"
 
-# Activate virtual environment and run a quick test
+# Run a quick test using uv run
 echo ""
 echo "Running quick verification..."
-source .venv/bin/activate
 
-python -c "
+uv run python -c "
 from config import OPENAI_API_KEY
 if OPENAI_API_KEY == 'your-openai-api-key-here':
     print('❌ Please update config.py with your actual OpenAI API key')
@@ -82,17 +81,16 @@ echo "=================================="
 echo "✅ Setup Complete!"
 echo "=================================="
 echo ""
-echo "To get started:"
-echo "  1. Activate the virtual environment:"
-echo "     source .venv/bin/activate"
+echo "To get started, run the optimized classifier:"
+echo "  uv run python 4_RedisVLRouterWithOptimizer.py"
 echo ""
-echo "  2. Run the optimized classifier:"
-echo "     python 4_RedisVLRouterWithOptimizer.py"
+echo "Or try other scripts:"
+echo "  uv run python 1_baseline_with_openai.py"
+echo "  uv run python 2_RedisVLRouter.py"
+echo "  uv run python 3_RedisVLRouterwithChatGPT.py"
 echo ""
-echo "  3. Or try other scripts:"
-echo "     python 1_baseline_with_openai.py"
-echo "     python 2_RedisVLRouter.py"
-echo "     python 3_RedisVLRouterwithChatGPT.py"
+echo "Note: 'uv run' automatically uses the virtual environment,"
+echo "      so you don't need to activate it manually!"
 echo ""
 echo "For more information, see README.md"
 echo ""

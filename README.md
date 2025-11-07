@@ -75,12 +75,9 @@ cd RedisVLClassifierRouter
 
 # Create virtual environment and install dependencies with uv
 uv sync
-
-# Activate the virtual environment
-source .venv/bin/activate  # macOS/Linux
-# or
-.venv\Scripts\activate  # Windows
 ```
+
+**Note:** With `uv run`, you don't need to manually activate the virtual environment! The `uv run` command automatically uses the project's `.venv`.
 
 ### 4. Configure API Keys
 
@@ -101,7 +98,7 @@ redis-cli ping
 # Should return: PONG
 
 # Check Python environment
-python --version
+uv run python --version
 # Should show: Python 3.11.x or higher
 ```
 
@@ -125,7 +122,7 @@ Each article has:
 Pure GPT-4 classification without any caching or optimization.
 
 ```bash
-python 1_baseline_with_openai.py
+uv run python 1_baseline_with_openai.py
 ```
 
 **What it does:**
@@ -143,7 +140,7 @@ python 1_baseline_with_openai.py
 Fast vector-based classification using RedisVL SemanticRouter.
 
 ```bash
-python 2_RedisVLRouter.py
+uv run python 2_RedisVLRouter.py
 ```
 
 **What it does:**
@@ -163,7 +160,7 @@ python 2_RedisVLRouter.py
 Combines RedisVL router with ChatGPT fallback for unknown cases.
 
 ```bash
-python 3_RedisVLRouterwithChatGPT.py
+uv run python 3_RedisVLRouterwithChatGPT.py
 ```
 
 **What it does:**
@@ -183,7 +180,7 @@ python 3_RedisVLRouterwithChatGPT.py
 Uses automatic threshold optimization for best performance.
 
 ```bash
-python 4_RedisVLRouterWithOptimizer.py
+uv run python 4_RedisVLRouterWithOptimizer.py
 ```
 
 **What it does:**
@@ -301,7 +298,7 @@ RedisVLClassifierRouter/
 To experiment with different thresholds:
 
 ```bash
-python test_distance_threshold.py
+uv run python test_distance_threshold.py
 ```
 
 This script tests multiple threshold values and shows which queries match at each level.

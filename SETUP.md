@@ -141,7 +141,11 @@ This command:
 - Installs all dependencies from `pyproject.toml`
 - Locks versions in `uv.lock`
 
-### 3. Activate Virtual Environment
+### 3. Activate Virtual Environment (Optional)
+
+**Note:** With `uv run`, activating the virtual environment is **optional**. The `uv run` command automatically uses the project's `.venv`.
+
+However, if you prefer to activate it manually:
 
 **macOS / Linux:**
 ```bash
@@ -158,9 +162,11 @@ You should see `(.venv)` in your terminal prompt.
 ### 4. Verify Python Environment
 
 ```bash
-python --version
+uv run python --version
 # Should show: Python 3.11.x or higher
 
+# If you activated the venv manually, you can also use:
+python --version
 which python
 # Should point to: /path/to/project/.venv/bin/python
 ```
@@ -236,7 +242,7 @@ Now you're ready to run the scripts!
 Start with the optimized router script:
 
 ```bash
-python 4_RedisVLRouterWithOptimizer.py
+uv run python 4_RedisVLRouterWithOptimizer.py
 ```
 
 This will:
@@ -252,13 +258,13 @@ Expected runtime: 3-5 minutes
 
 ```bash
 # Baseline with pure GPT-4
-python 1_baseline_with_openai.py
+uv run python 1_baseline_with_openai.py
 
 # RedisVL router only
-python 2_RedisVLRouter.py
+uv run python 2_RedisVLRouter.py
 
 # Hybrid approach
-python 3_RedisVLRouterwithChatGPT.py
+uv run python 3_RedisVLRouterwithChatGPT.py
 ```
 
 ## Troubleshooting
